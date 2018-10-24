@@ -25,7 +25,5 @@ test:
 
 production:
   <<: *default
-  database: heroku_ec8a4bde8ca7a6d
-  username: bdccedf47e181b
-  password: c7bb462a
+  database: hiring_platform_production
 
