@@ -40,11 +40,10 @@ section {
   margin-top: 20px;
   }
 .authform {
-  padding-top: 30px;
+  padding-top: 10px;
   max-width: 320px;
   margin: 0 auto;
 }
-
 .contact_us{
   background-color: #EBF5FB;
   padding-bottom: 40px;
@@ -59,22 +58,32 @@ section {
 .img_responsive{
   height: 200px;
 }
-.quizwidth{
-  max-width: 1400px;  
-}
 .nextbutton{
   position: absolute; 
   right: 45px;  
 }
-.table {
+table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
 }
-.td, th {
-  border: 1px solid #ABB2B9;
+.show_table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 50%;
+}
+td {
+  border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
+}
+th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+tr:nth-child(even) {
+  background-color: #EBF5FB;
 }
 .margin-image{
   margin-top: 5%;  
@@ -86,16 +95,6 @@ section {
   color: #0B5345; 
   padding-top: 15px;  
 }
-.graph-content1 {
-  padding: 6px 12px;
-  width: 30%;
-  margin-top: 50px;
-}
-.graph-content2 {
-  padding: 6px 12px;
-  width: 30%;
-  margin-top: 50px;
-}
 .border-text{
   width:700px;
   height: 100px;
@@ -103,7 +102,6 @@ section {
   color:  #212f3d; 
   padding-top: 35px;  
 }
-
 .negative-review{
   width:400px;
   height: 50px;
@@ -111,11 +109,6 @@ section {
   color: #A93226; 
   padding-top: 15px;
 }
-
-.big-font{
-  font-size: 22px; 
-}
-
 .authform form {
   @extend .well;
   @extend .well-lg;
@@ -136,12 +129,21 @@ section {
   @extend .alert-danger;
 }
 #error_explanation h2 {
-  font-size: 16px;
+  font-size: 12px;
+}
+#success_explanation h2 {
+  font-size: 12px;
+  @extend .alert;
+  @extend .alert-success;
 }
 .button-xs {
   @extend .btn;
   @extend .btn-primary;
   @extend .btn-xs;
+}
+.bg-btn {
+  background-color: #418bca;
+  color: #ffffff;
 }
 .navbar-inverse{
     background-color:#418bca;
@@ -217,13 +219,10 @@ ul li.sticky{
 .form-inline .form-group {
     margin-left: 15px;
 }
-.quizdetails{
+.jobtable{
   background-color: #EBF5FB;
   margin-top: 20px;
   border-radius: 6px;
   border: 1px solid #e3e3e3;
-}
-.btn-quiz{
-  color: white;
-  background-color: #337ab7;
+  padding-bottom:10px;
 }

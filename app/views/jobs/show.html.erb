@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="authform jobtable">
+      <center>Job Posting is created for position <br><b><%= @job.try(:title) %></b></center>
+    </div>
+    <br>
+    <center>
+      <div>
+        <table class="show_table">
+          <tbody>
+            <tr>
+              <th><b>Requisition</th>
+              <td><%= @job.job_uid %></th>
+            </tr>
+            <tr>
+              <th><b>Title</th>
+              <td><%= @job.title %></th>
+            </tr>
+            <tr>
+              <th><b>Description</th>
+              <td><%= @job.description %></th>
+            </tr>
+            <tr>
+              <th><b>Minimum Requirement</th>
+              <td><%= @job.minimum_requirement %></th>
+            </tr>  
+          </tbody>
+        </table>
+        <br>
+        <%= link_to new_job_path, :class => "btn btn-info bg-btn" do %>
+          <center><span class="glyphicon glyphicon-plus"> New</span></center>
+        <% end %>
+      </div>
+    </center>
+  </div>
+</div>

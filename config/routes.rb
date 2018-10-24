@@ -6,4 +6,21 @@ Rails.application.routes.draw do
 
   get 'dashboard/admin'
   get 'dashboard/applicant'
+
+  resources :jobs do
+    member do
+      get :applicants
+    end
+  end
+
+  resources :applicants do
+    collection do
+      get :jobs
+      get :applied_jobs
+    end
+    member do
+      get :apply
+      post :submit
+    end
+  end
 end

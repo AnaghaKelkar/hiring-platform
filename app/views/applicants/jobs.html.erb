@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <div class="authform jobtable">
+      <center><b>Active Job Postings</b></center>
+    </div>
+    <br>
+    <center>
+      <% if @jobs.empty? %>
+        <p class = "positive-review"><b>No active jobs to apply. We will keep you updated</b></p>
+      <% else %>
+        <div>
+          <table>
+            <tbody>
+              <tr>
+                <th><b>Requisition</th>
+                <th><b>Title</th>
+                <th><b>Description</th>
+                <th><b>Minimum Requirement</th>
+                <th><b>Apply</b></th> 
+              </tr>
+              <% @jobs.each do |job| %>
+                <tr>
+                  <td><%= job.job_uid %></td>
+                  <td><%= job.title %></td>
+                  <td><%= job.description %></td>
+                  <td><%= job.minimum_requirement %></td>
+                  <td>
+                    <% unless job.applied?(current_user) %>
+                      <%= link_to apply_applicant_path(job) do %>
+                        <center><span class="glyphicon glyphicon-hand-up"></span></center>
+                      <% end %>
+                    <% else %>
+                      <center><span class="glyphicon glyphicon-hand-up"></span></center>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      <% end %>
+    </center>
+  </div>
+</div>
