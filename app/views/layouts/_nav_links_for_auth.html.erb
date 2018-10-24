@@ -1,12 +1,12 @@
 <% if user_signed_in? %>
-  <li><%= link_to 'My profile', edit_user_registration_path %></li>
+  <li><%= link_to 'My profile', applicant_path(current_user.loginable) %></li>
   <li><%= link_to 'Edit account', edit_user_registration_path %></li>
   <% if current_user.is_admin? %>
-    <li><%= link_to 'Create Jobs', edit_user_registration_path %></li>
-    <li><%= link_to 'View Applicants', edit_user_registration_path %></li>
+    <li><%= link_to 'Create Jobs', new_job_path %></li>
+    <li><%= link_to 'View Applicants', jobs_path %></li>
   <% else %>
-    <li><%= link_to 'Job board', edit_user_registration_path %></li>
-    <li><%= link_to 'Applied jobs', edit_user_registration_path %></li>
+    <li><%= link_to 'Job board', jobs_applicants_path %></li>
+    <li><%= link_to 'Applied jobs', applied_jobs_applicants_path %></li>
   <% end %>
 <% else %>
   <li><%= link_to 'Sign in', new_user_session_path %></li>

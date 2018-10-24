@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="authform jobtable">
+      <center><b>Applied Jobs by <%= current_user.name %></b></center>
+    </div>
+    <br>
+    <center>
+      <% if @jobs.empty? %>
+        <p class = "positive-review"><b>No applications yet.</b></p>
+      <% else %>
+        <div>
+          <table>
+            <tbody>
+              <tr>
+                <b>
+                  <th>Employer</th>
+                  <th>Requisition</th>
+                  <th>Title</th>
+                  <th>Description</th>
+                  <th>Minimum Requirement</th>
+                </b>
+              </tr>
+              <% @jobs.each do |job| %>
+                <tr>
+                  <td><%= job.admin.user.try(:name) %></td>
+                  <td><%= job.job_uid %></td>
+                  <td><%= job.title %></td>
+                  <td><%= job.description %></td>
+                  <td><%= job.minimum_requirement %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      <% end %>
+    </center>
+  </div>
+</div>

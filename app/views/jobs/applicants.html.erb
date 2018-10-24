@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="authform jobtable">
+      <center><b>Job Posting for position</b> "<%= @job.title %>"</center>
+    </div>
+    <br>
+    <center>
+      <% if @applicants.empty? %>
+        <p class = "positive-review"><b>No active applicants for this position.</b></p>
+      <% else %>
+        <div>
+          <table>
+            <tbody>
+              <tr>
+                <th><b>Name</th>
+                <th><b>Email</th>
+                <th><b>View profile</b></th> 
+              </tr>
+              <% @applicants.each do |applicant| %>
+                <tr>
+                  <td><%= applicant.user.try(:name) %></td>
+                  <td><%= applicant.user.try(:email) %></td>
+                  <td>
+                    <%= link_to '#', target: "_blank" do %>
+                      <center><span class="glyphicon glyphicon-modal-window"></span></center>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      <% end %>
+    </center>
+  </div>
+</div>
