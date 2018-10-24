@@ -1,0 +1,42 @@
+<div class="authform">
+  <%= form_with scope: :job, url: jobs_path, local: true do |f| %>
+    <% if @job.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= pluralize(@job.errors.count, "error") %> prohibited
+          this job from being saved:
+        </h2>
+        <ul>
+          <% @job.errors.full_messages.each do |msg| %>
+            <li style="font-size: 12px"><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <% if @job.valid? %>
+      <div id="success_explanation">
+          <h2> Successfully created new job posting</h2>
+      </div>
+      <% @job = Job.new %>  
+    <% end %>
+    <h3>New Job Posting</h3>
+    <div class="form-group">
+      <%= f.label :requisition_id %>
+      <%= f.text_field :job_uid, :autofocus => true, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :title %>
+      <%= f.text_field :title, :autofocus => true, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :description %>
+      <%= f.text_area :description, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :minimum_requirement_for_job %>
+      <%= f.text_field :minimum_requirement, class: "form-control" %>
+    </div>
+    <%= f.submit 'Create', :class => 'button right' %>
+    <%= link_to 'Clear', new_job_path, :class => "button" %>
+  <% end %>
+</div>

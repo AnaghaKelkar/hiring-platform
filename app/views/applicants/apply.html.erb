@@ -1,0 +1,32 @@
+<div class="authform">
+  <%= form_with scope: :job, url: submit_applicant_path(@job), local: true do |f| %>
+    <center>
+      <h4>Job Posting for position <br>"<%= @job.title %>"</h4>
+      <h5>Want to update your profile before sharing with employer?</h5>
+      <%= link_to 'Update profile', applicant_path(current_user.loginable), :target => "_blank", :class => "button" %></center>
+    </center>
+    <hr>
+    <table>
+      <tbody>
+        <tr>
+          <th>Title</th>
+          <td><%= @job.title %></td>
+        </tr>
+        <tr>
+          <th>Requisition</th>
+          <td><%= @job.job_uid %></td>
+        </tr>
+        <tr>
+          <th>Description</th>
+          <td><%= @job.description %></td>
+        </tr>
+        <tr>
+          <th>Minimum Requirement</th>
+          <td><%= @job.minimum_requirement %></td>
+        </tr>
+      </tbody>
+    </table>
+    <hr>
+    <center><%= f.submit 'Apply', :class => 'button' %></center>
+  <% end %>
+</div>

@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row">
+    <div class="authform jobtable">
+      <center><b>Job Postings</b> by <%= current_user.name %></center>
+    </div>
+    <br>
+    <center>
+      <% if @jobs.empty? %>
+        <p class = "positive-review"><b>No active jobs by you.</b></p>
+      <% else %>
+        <div>
+          <table>
+            <tbody>
+              <tr>
+                <th><b>Requisition</th>
+                <th><b>Title</th>
+                <th><b>Description</th>
+                <th><b>Minimum Requirement</th>
+                <th><b>Applicants applied for Job</th>
+                <th><b>View applicants</b></th>
+                <th><b>Status</b></th> 
+                <th><b>Change status</b></th>
+              </tr>
+              <% @jobs.each do |job| %>
+                <tr>
+                  <td><%= job.job_uid %></td>
+                  <td><%= job.title %></td>
+                  <td><%= job.description %></td>
+                  <td><%= job.minimum_requirement %></td>
+                  <td><%= job.applicants_jobs.count %></td>
+                  <td>
+                    <%= link_to applicants_job_path(job) do %>
+                      <center><span class="glyphicon glyphicon-th"></span></center>
+                    <% end %>
+                  </td>
+                  <td><%= job.status_in_words %></td>
+                  <td>
+                    <%= link_to status_job_path(job) do %>
+                      <center><span class="glyphicon glyphicon-pencil"></span></center>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      <% end %>
+    </center>
+  </div>
+</div>

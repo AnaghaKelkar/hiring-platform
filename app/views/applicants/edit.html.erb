@@ -1,0 +1,86 @@
+<div class="authform">
+  <%= form_with(model: @applicant, local: true) do |f| %>
+    <% if @applicant.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= pluralize(@applicant.errors.count, "error") %> prohibited
+          this job from being saved:
+        </h2>
+        <ul>
+          <% @applicant.errors.full_messages.each do |msg| %>
+            <li style="font-size: 12px"><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <% unless @applicant.valid? %>
+      <div id="success_explanation">
+          <h2> Profile successfully updated</h2>
+      </div>
+      <% @job = Job.new %>  
+    <% end %>
+    <h4><center>My Profile</center></h4>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, value: @applicant.user.name, :autofocus => true, class: 'form-control', disabled: true %>
+    </div>
+    <div class="form-group">
+      <%= f.label :email %>
+      <%= f.text_field :email, value: @applicant.user.email, :autofocus => true, class: 'form-control', disabled: true %>
+    </div>
+    <div class="form-group">
+      <%= f.label :mobile_number %>
+      <%= f.text_field :mobile_number, value: @applicant.mobile_number, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :address %>
+      <div class="row">
+        <div class="column">
+          <%= f.text_field :line_1, value: @applicant.address.try(:line_1), class: "form-control", placeholder: "Line 1" %>
+        </div>
+        <div class="column">
+          <%= f.text_field :line_2, value: @applicant.address.try(:line_2), class: "form-control", placeholder: "Line 2" %>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="column">
+          <%= f.text_field :city, value: @applicant.address.try(:city), class: "form-control", placeholder: "City" %>
+        </div>
+        <div class="column">
+          <%= f.text_field :state, value: @applicant.address.try(:state), class: "form-control", placeholder: "State" %>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="column">
+          <%= f.text_field :pincode, value: @applicant.address.try(:pincode), class: "form-control", placeholder: "Pincode" %>
+        </div>
+        <div class="column">
+          <%= f.text_field :country, value: @applicant.address.try(:country), class: "form-control", placeholder: "Country" %>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :earliest_starting_date %>
+      <%= f.date_field :start_date, value: @applicant.start_date, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :degree %>
+      <%= f.text_field :degree, value: @applicant.degree, class: 'form-control'%>
+    </div>
+    <div class="form-group">
+      <%= f.label :roles_interested %>
+      <%= f.text_area :roles_interested, value: @applicant.roles_interested, class: 'form-control'%>
+    </div>
+    <div class="form-group">
+      <%= f.label :previous_employers %>
+      <%= f.text_area :employers, value: @applicant.employers, class: 'form-control'%>
+    </div>
+    <div class="form-group">
+      <%= f.label :previous_education %>
+      <%= f.text_area :education, value: @applicant.education, class: 'form-control'%>
+    </div>
+    <center><%= f.submit 'Update', :class => 'button' %></center>
+  <% end %>
+</div>
