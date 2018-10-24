@@ -18,6 +18,8 @@
                   <th>Title</th>
                   <th>Description</th>
                   <th>Minimum Requirement</th>
+                  <th>Applied</th>
+                  <th>Status</th>
                 </b>
               </tr>
               <% @jobs.each do |job| %>
@@ -27,6 +29,8 @@
                   <td><%= job.title %></td>
                   <td><%= job.description %></td>
                   <td><%= job.minimum_requirement %></td>
+                  <td><%= time_ago_in_words(job.time_applied(current_user)) %> ago</td>
+                  <td><%= job.status_in_words %></td>
                 </tr>
               <% end %>
             </tbody>

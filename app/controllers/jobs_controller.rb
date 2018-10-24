@@ -26,6 +26,16 @@ class JobsController < ApplicationController
     @applicants = Applicant.where(id: @job.applicants_jobs.pluck(:applicant_id))
   end
 
+  def status
+    @job = job(params[:id])
+    if @job.active?
+      @job.update(status: Job::INACTIVE)
+    else
+      @job.update(status: Job::ACTIVE)
+    end
+    redirect_to jobs_path
+  end
+
     private
       def job_params
         params.require(:job).permit(:job_uid, :title, :description, :minimum_requirement)

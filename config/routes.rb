@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :jobs do
     member do
       get :applicants
+      get :status
     end
   end
 
@@ -23,4 +24,6 @@ Rails.application.routes.draw do
       post :submit
     end
   end
+
+  resources :admins
 end

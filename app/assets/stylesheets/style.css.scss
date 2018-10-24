@@ -13,7 +13,15 @@ img {
   @extend .text-center;
   }
 .column_4 {
+  @extend .col-md-4;
+  @extend .text-center;
+  }
+.column_3 {
   @extend .col-md-3;
+  @extend .text-center;
+  }
+.column_2 {
+  @extend .col-md-2;
   @extend .text-center;
   }
 .form {
@@ -53,10 +61,10 @@ section {
   margin-top: 30px;
 }
 .top_margin{
-  margin-top: 50px;
+  margin-top: 30px;
 }
 .img_responsive{
-  height: 200px;
+  height: 150px;
 }
 .nextbutton{
   position: absolute; 

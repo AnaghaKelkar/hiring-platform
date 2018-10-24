@@ -1,0 +1,67 @@
+<div class="authform">
+  <%= form_with(model: @admin, local: true) do |f| %>
+    <h4><center>My Profile</center></h4>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, value: @admin.user.name, :autofocus => true, class: 'form-control', disabled: true %>
+    </div>
+    <div class="form-group">
+      <%= f.label :email %>
+      <%= f.text_field :email, value: @admin.user.email, class: 'form-control', disabled: true %>
+    </div>
+    <div class="form-group">
+      <%= f.label :title %>
+      <%= f.text_field :title, value: @admin.title, class: 'form-control'%>
+    </div>
+    <div class="form-group">
+      <%= f.label :mobile_number %>
+      <%= f.text_field :mobile_number, value: @admin.mobile_number, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :company_address %>
+      <div class="row">
+        <div class="column">
+          <%= f.text_field :line_1, value: @admin.address.try(:line_1), class: "form-control", placeholder: "Line 1" %>
+        </div>
+        <div class="column">
+          <%= f.text_field :line_2, value: @admin.address.try(:line_2), class: "form-control", placeholder: "Line 2" %>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="column">
+          <%= f.text_field :city, value: @admin.address.try(:city), class: "form-control", placeholder: "City" %>
+        </div>
+        <div class="column">
+          <%= f.text_field :state, value: @admin.address.try(:state), class: "form-control", placeholder: "State" %>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="column">
+          <%= f.text_field :pincode, value: @admin.address.try(:pincode), class: "form-control", placeholder: "Pincode" %>
+        </div>
+        <div class="column">
+          <%= f.text_field :country, value: @admin.address.try(:country), class: "form-control", placeholder: "Country" %>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :founded_in %>
+      <%= f.text_field :founded_in, value: @admin.founded_in, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :number_of_employees %>
+      <%= f.text_field :size, value: @admin.size, class: 'form-control'%>
+    </div>
+    <div class="form-group">
+      <%= f.label :positions_available %>
+      <%= f.text_area :positions, value: @admin.positions, class: 'form-control'%>
+    </div>
+    <div class="form-group">
+      <%= f.label :currently_hiring %>
+      <%= f.select :hiring, options_for_select(options_for_hiring), {}, { class: "form-control" } %>
+    </div>
+    <center><%= f.submit 'Update', :class => 'button' %></center>
+  <% end %>
+</div>
