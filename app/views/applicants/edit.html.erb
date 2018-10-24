@@ -74,11 +74,11 @@
       <%= f.text_area :roles_interested, value: @applicant.roles_interested, class: 'form-control'%>
     </div>
     <div class="form-group">
-      <%= f.label :employers %>
+      <%= f.label :previous_employers %>
       <%= f.text_area :employers, value: @applicant.employers, class: 'form-control'%>
     </div>
     <div class="form-group">
-      <%= f.label :education %>
+      <%= f.label :previous_education %>
       <%= f.text_area :education, value: @applicant.education, class: 'form-control'%>
     </div>
     <center><%= f.submit 'Update', :class => 'button' %></center>

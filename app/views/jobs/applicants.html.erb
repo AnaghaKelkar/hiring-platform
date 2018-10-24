@@ -21,7 +21,7 @@
                   <td><%= applicant.user.try(:name) %></td>
                   <td><%= applicant.user.try(:email) %></td>
                   <td>
-                    <%= link_to '#', target: "_blank" do %>
+                    <%= link_to applicant_path(applicant), target: "_blank" do %>
                       <center><span class="glyphicon glyphicon-modal-window"></span></center>
                     <% end %>
                   </td>
@@ -31,6 +31,9 @@
           </table>
         </div>
       <% end %>
+      <div class="authform">
+        <%= link_to 'Previous', jobs_path, :class => "button center" %>
+      </div>
     </center>
   </div>
 </div>

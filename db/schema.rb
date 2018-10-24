@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181024085006) do
+ActiveRecord::Schema.define(version: 20181024194352) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci" do |t|
     t.string "line_1"
@@ -19,10 +19,17 @@ ActiveRecord::Schema.define(version: 20181024085006) do
     t.string "state"
     t.string "pincode"
     t.string "country"
-    t.integer "applicant_id"
+    t.integer "addressable_id"
+    t.string "addressable_type"
   end
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci" do |t|
+    t.string "title"
+    t.string "mobile_number"
+    t.string "founded_in"
+    t.integer "size"
+    t.string "positions"
+    t.boolean "hiring"
   end
 
   create_table "applicants", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci" do |t|
@@ -38,6 +45,7 @@ ActiveRecord::Schema.define(version: 20181024085006) do
   create_table "applicants_jobs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci" do |t|
     t.integer "applicant_id"
     t.integer "job_id"
+    t.datetime "created_at"
   end
 
   create_table "jobs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci" do |t|
@@ -47,6 +55,7 @@ ActiveRecord::Schema.define(version: 20181024085006) do
     t.string "minimum_requirement"
     t.integer "status"
     t.integer "admin_id"
+    t.datetime "created_at"
   end
 
   create_table "table_applicants", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci" do |t|

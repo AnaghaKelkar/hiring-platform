@@ -14,7 +14,7 @@ class ApplicantsController < ApplicationController
           render 'edit'
         end
       else
-        new_address = Address.new(address_params.merge(applicant: @applicant))
+        new_address = Address.new(address_params.merge(addressable: @applicant))
         if new_address.save
           render 'edit'
         else
@@ -26,6 +26,7 @@ class ApplicantsController < ApplicationController
 
   def show
     @applicant = Applicant.find params[:id]
+    @address = @applicant.address
   end
 
   def applied_jobs

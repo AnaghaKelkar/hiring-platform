@@ -12,14 +12,17 @@
           <table>
             <tbody>
               <tr>
+                <th><b>Employer</b></th>
                 <th><b>Requisition</th>
                 <th><b>Title</th>
                 <th><b>Description</th>
                 <th><b>Minimum Requirement</th>
                 <th><b>Apply</b></th> 
+                <th><b>Created</b></th>
               </tr>
               <% @jobs.each do |job| %>
                 <tr>
+                  <td><%= job.admin.try(:user).try(:name) %></td>
                   <td><%= job.job_uid %></td>
                   <td><%= job.title %></td>
                   <td><%= job.description %></td>
@@ -33,6 +36,7 @@
                       <center><span class="glyphicon glyphicon-hand-up"></span></center>
                     <% end %>
                   </td>
+                  <td><%= time_ago_in_words(job.created_at) %> ago</td>
                 </tr>
               <% end %>
             </tbody>

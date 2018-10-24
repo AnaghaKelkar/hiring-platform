@@ -1,0 +1,107 @@
+<div class="container">
+  <div class="row">
+    <div class="authform jobtable">
+      <center><b>My profile</b></center>
+    </div>
+    <br>
+    <center>
+      <div>
+        <table class="show_table">
+          <tbody>
+            <tr>
+              <th><b>Name</th>
+              <td><%= @admin.user.try(:name) %></td>
+            </tr>
+            <tr>
+              <th><b>Email</th>
+              <td><%= @admin.user.try(:email) %></td>
+            </tr>
+            <tr>
+              <th><b>Title</th>
+              <% title = @admin.title %> 
+              <td>
+                <% if title.present? %>
+                  <%= title %>
+                <% else %>
+                  N/A
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <th><b>Mobile number</th>
+              <% mobile = @admin.mobile_number %> 
+              <td>
+                <% if mobile.present? %>
+                  <%= mobile %>
+                <% else %>
+                  N/A
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <th><b>Company Address</th>
+              <td>
+                <% if @address.nil? %>
+                  N/A
+                <% else %>
+                  <%= @address.line_1 %> <br> <%= @address.city %> <br> <%= @address.state %> <br>
+                  <%= @address.pincode %> <br> <%= @address.country %>
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <th><b>Founded in</th>
+              <% founded_in = @admin.founded_in %>
+              <td>
+                <% if founded_in.present? %>
+                  <%= founded_in %>
+                <% else %>
+                  N/A
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <th><b>Number of employees</th>
+              <% size = @admin.size %>
+              <td>
+                <% if size.present? %>
+                  <%= size %>
+                <% else %>
+                  N/A
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <th><b>Available Positions</th>
+              <% positions = @admin.positions %>
+              <td>
+                <% if positions.present? %>
+                  <%= positions %>
+                <% else %>
+                  N/A
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <th><b>Currently hiring</th>
+              <% hiring = @admin.hiring %>
+              <td>
+                <% if hiring.nil? %>
+                  N/A
+                <% elsif hiring %>
+                  Yes, we are hiring
+                <% else %>
+                  No, we will keep you updated
+                <% end %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+        <%= link_to edit_admin_path(@admin), :class => "btn btn-info bg-btn" do %>
+          <center><span class="glyphicon glyphicon-pencil"> Edit</span></center>
+        <% end %>
+      </div>
+    </center>
+  </div>
+</div>

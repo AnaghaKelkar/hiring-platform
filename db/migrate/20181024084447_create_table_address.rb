@@ -7,11 +7,12 @@ class CreateTableAddress < ActiveRecord::Migration[5.1]
       t.string :state
       t.string :pincode
       t.string :country
-      t.integer :applicant_id
+      t.integer :addressable_id
+      t.string :addressable_type
     end
   end
 
   def down
-    drop_table :address
+    drop_table :addresses
   end
 end

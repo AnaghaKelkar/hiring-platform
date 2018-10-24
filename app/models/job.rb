@@ -11,6 +11,23 @@ class Job < ApplicationRecord
   INACTIVE =  2
 
   def applied?(user)
-  	applicants_jobs.where(applicant: user.loginable).present?
+  	applicants(user).present?
   end
+
+  def time_applied(user)
+    applicants(user).first.created_at
+  end
+
+  def status_in_words
+    status==Job::ACTIVE ? 'Active' : 'Closed'
+  end
+
+  def active?
+    status==Job::ACTIVE
+  end
+
+    private
+      def applicants(user)
+        applicants_jobs.where(applicant: user.loginable)
+      end
 end
