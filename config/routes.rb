@@ -26,4 +26,10 @@ Rails.application.routes.draw do
   end
 
   resources :admins
+
+  resources :analytics do
+    collection do
+      get :summary
+    end
+  end
 end
