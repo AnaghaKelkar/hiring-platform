@@ -16,9 +16,9 @@ class ApplicantsController < ApplicationController
       else
         new_address = Address.new(address_params.merge(addressable: @applicant))
         if new_address.save
-          render 'edit'
-        else
           redirect_to @applicant
+        else
+          render 'edit'
         end
       end
     end
@@ -53,7 +53,7 @@ class ApplicantsController < ApplicationController
 
     private
       def applicant_params
-        params.require(:applicant).permit(:mobile_number, :start_date, :degree, :roles_interested, :employers, :education)
+        params.require(:applicant).permit(:mobile_number, :start_date, :degree, :roles_interested, :employers, :education, :description)
       end
 
       def address_params

@@ -21,4 +21,12 @@ development:
 
 test:
   <<: *default
-  database: hiring_platform_test
+  database: hiring_platform_development
+
+production:
+  <<: *default
+  database: heroku_ec8a4bde8ca7a6d
+  username: bdccedf47e181b
+  password: c7bb462a
+  host: us-cdbr-iron-east-01.cleardb.net
+
