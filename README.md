@@ -1,24 +1,63 @@
 # README
+Things to make application run successfully:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
+View demo on https://hiringplatformbyanagha.herokuapp.com/
 
 * Ruby version
 
-* System dependencies
+  2.3.3
 
-* Configuration
+* Rails version
+    
+  5.1.6
+
+* Github version
+  
+  1.9.4
+
+* MySQL version
+
+  8.0.13
+
+* Clone project
+
+  git@github.com:AnaghaKelkar/hiring-platform.git
+
+  ------------------------or------------------------ 
+  
+  download zip
+
+* Go to folder
+
+  cd hiring-platform (in case of clone)
+
+  cd hiring-platform-master (in case of downloading)
+
+* Install gemset
+
+  bundle install
 
 * Database creation
+  
+  rake db:create
 
 * Database initialization
+  
+  rake db:migrate
 
-* How to run the test suite
+* Setup 
+  
+  rake initial:setup
 
-* Services (job queues, cache servers, search engines, etc.)
+* Start Server
 
-* Deployment instructions
+  rails server
 
-* ...
+* Run application in browser
+  
+  localhost:3000
+
+* Application testing - Rspec
+
+  bundle exec rspec spec/features/users/*
+
