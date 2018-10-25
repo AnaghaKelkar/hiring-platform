@@ -35,7 +35,7 @@ class ApplicantsController < ApplicationController
 
   def jobs
     @jobs = Job.where(status: Job::ACTIVE)
-    @employers = Admin.all
+    @employers = Admin.where(id: @jobs.pluck(:admin_id))
     if params[:employer].present?
       admin = Admin.find params[:employer]
       @jobs = @jobs.where(admin: admin)
