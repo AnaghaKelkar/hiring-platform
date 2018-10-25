@@ -21,7 +21,7 @@ development:
 
 test:
   <<: *default
-  database: hiring_platform_test
+  database: hiring_platform_development
 
 production:
   <<: *default
