@@ -5,9 +5,23 @@
     </div>
     <br>
     <center>
-      <% if @applicants.empty? %>
+      <% unless @applicants.present? %>
         <p class = "positive-review"><b>No active applicants for this position.</b></p>
       <% else %>
+        <%= form_tag(applicants_job_path(@job), method: :get, :html => { :role => 'form'}) do %>
+          <div class="form-group left_margin_1">
+            <div class="column_2">
+              <%= select_tag :applicant, options_for_select(options_for_applicants(@options_for_applicants), params[:applicant]), :class => 'form-control' %>
+            </div>
+            <div class="column_2">
+              <%= submit_tag 'Applicant Search by name', class: 'btn btn-default btn btn-submit' %>
+            </div>
+            <div class="column_1">
+              <%= link_to "Reload", applicants_job_path(@job), class: 'btn btn-default btn btn-submit' %><br />
+            </div>
+          </div>
+        <% end %>
+        <br><br>
         <div>
           <table>
             <tbody>

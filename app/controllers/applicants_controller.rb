@@ -35,6 +35,11 @@ class ApplicantsController < ApplicationController
 
   def jobs
     @jobs = Job.where(status: Job::ACTIVE)
+    @employers = Admin.all
+    if params[:employer].present?
+      admin = Admin.find params[:employer]
+      @jobs = @jobs.where(admin: admin)
+    end
   end
 
   def apply

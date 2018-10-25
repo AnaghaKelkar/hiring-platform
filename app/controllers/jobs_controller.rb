@@ -23,7 +23,12 @@ class JobsController < ApplicationController
 
   def applicants
     @job = job(params[:id])
-    @applicants = Applicant.where(id: @job.applicants_jobs.pluck(:applicant_id))
+    @options_for_applicants = Applicant.where(id: @job.applicants_jobs.pluck(:applicant_id))
+    if params[:applicant].present?
+      @applicants = Applicant.where(id: params[:applicant])
+    else
+      @applicants = @options_for_applicants
+    end
   end
 
   def status
