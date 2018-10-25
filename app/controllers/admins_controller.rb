@@ -14,11 +14,15 @@ class AdminsController < ApplicationController
           render 'edit'
         end
       else
-        new_address = Address.new(address_params.merge(addressable: @admin))
-        if new_address.save
+        if address_empty?(address_params)
           redirect_to @admin
         else
-          render 'edit'
+          new_address = Address.new(address_params.merge(addressable: @admin))
+          if new_address.save
+            redirect_to @admin
+          else
+            render 'edit'
+          end
         end
       end
     end
@@ -36,6 +40,10 @@ class AdminsController < ApplicationController
 
       def address_params
         params.require(:admin).permit(:line_1, :line_2, :city, :state, :pincode, :country)
+      end
+
+      def address_empty?(params)
+        params.values.uniq.count==1
       end
 
       def admin
