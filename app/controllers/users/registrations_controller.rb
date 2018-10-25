@@ -23,6 +23,14 @@ module Users
       end
     end
 
+    def after_update_path_for(resource)
+      if resource.is_admin?
+        dashboard_admin_path
+      else
+        dashboard_applicant_path
+      end
+    end
+
       private
         def registration_params
           params.require(:user).permit(:email, :name, :password, :password_confirmation)
