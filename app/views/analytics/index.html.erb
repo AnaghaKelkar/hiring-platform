@@ -8,7 +8,7 @@
         google.charts.load('43', {'packages':['corechart']});
         $.ajax({
           method: 'GET',
-          url: 'http://localhost:3000/analytics/summary',
+          url: 'https://hiringplatformbyanagha.herokuapp.com/analytics/summary',
           dataType: 'json',
           success: function(data){
             window.info_json = data;
