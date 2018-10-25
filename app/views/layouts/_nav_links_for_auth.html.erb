@@ -20,7 +20,7 @@
   <li><%= link_to 'Sign up', new_user_registration_path %></li>
 <% end %>
 <% if user_signed_in? %>
-  <li style="margin-left: 530px;">
+  <li style="margin-left: 450px;">
     <%= link_to destroy_user_session_path, :method=>'delete' do %>
       <span class="glyphicon glyphicon-off"></span>
     <% end %>
