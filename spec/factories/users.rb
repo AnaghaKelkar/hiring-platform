@@ -1,7 +1,8 @@
 FactoryBot.define do
   factory :user do
-    name "Test User"
+  	name "Test User"
     email "test@example.com"
-    password "please123"
+    password "test123"
+    loginable FactoryBot.create(:admin)
   end
 end
