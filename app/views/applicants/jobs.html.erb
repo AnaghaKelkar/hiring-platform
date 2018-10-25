@@ -1,23 +1,38 @@
 <div class="container">
-  <div class="row">
-    <div class="authform jobtable">
-      <center><b>Active Job Postings</b></center>
-    </div>
-    <br>
-    <center>
-      <% if @jobs.empty? %>
-        <p class = "positive-review"><b>No active jobs to apply. We will keep you updated</b></p>
-      <% else %>
+  <div class="authform jobtable">
+    <center><b>Active Job Postings</b></center>
+  </div>
+  <br>
+  <center>
+    <% if @jobs.empty? %>
+      <p class = "positive-review"><b>No active jobs to apply. We will keep you updated</b></p>
+    <% else %>
+      <%= form_tag(jobs_applicants_path, method: :get, :html => { :role => 'form'}) do %>
+        <div class="form-group left_margin">
+          <div class="column_2">
+            <%= select_tag :employer, options_for_select(options_for_employers(@employers), params[:employer]), :class => 'form-control' %>
+          </div>
+          <div class="column_2">
+            <%= submit_tag 'Employer Search by name', class: 'btn btn-default btn btn-submit' %>
+          </div>
+          <div class="column_1">
+            <%= link_to "Reload", jobs_applicants_path, class: 'btn btn-default btn btn-submit' %><br />
+          </div>
+        </div>
+      <% end %>
+      <br><br>
+      <div class="row">
         <div>
           <table>
             <tbody>
               <tr>
                 <th><b>Employer</b></th>
-                <th><b>Requisition</th>
-                <th><b>Title</th>
-                <th><b>Description</th>
-                <th><b>Minimum Requirement</th>
-                <th><b>Apply</b></th> 
+                <th><b>Requisition</b></th>
+                <th><b>Title</b></th>
+                <th><b>Description</b></th>
+                <th><b>Minimum Requirement</b></th>
+                <th><b>Employer profile</b></th>
+                <th><b>Apply</b></th>
                 <th><b>Created</b></th>
               </tr>
               <% @jobs.each do |job| %>
@@ -27,6 +42,11 @@
                   <td><%= job.title %></td>
                   <td><%= job.description %></td>
                   <td><%= job.minimum_requirement %></td>
+                  <td>
+                    <%= link_to admin_path(job.admin), target: "_blank" do %>
+                      <center><span class="glyphicon glyphicon-modal-window"></span></center>
+                    <% end %>
+                  </td>
                   <td>
                     <% unless job.applied?(current_user) %>
                       <%= link_to apply_applicant_path(job) do %>
@@ -42,7 +62,7 @@
             </tbody>
           </table>
         </div>
-      <% end %>
-    </center>
-  </div>
+      </div>
+    <% end %>
+  </center>
 </div>

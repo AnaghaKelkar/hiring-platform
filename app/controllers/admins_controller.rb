@@ -16,9 +16,9 @@ class AdminsController < ApplicationController
       else
         new_address = Address.new(address_params.merge(addressable: @admin))
         if new_address.save
-          render 'edit'
-        else
           redirect_to @admin
+        else
+          render 'edit'
         end
       end
     end

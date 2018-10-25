@@ -12,6 +12,10 @@ img {
   @extend .col-md-6;
   @extend .text-center;
   }
+.column_8 {
+  @extend .col-md-8;
+  @extend .text-center;
+  }
 .column_4 {
   @extend .col-md-4;
   @extend .text-center;
@@ -22,6 +26,10 @@ img {
   }
 .column_2 {
   @extend .col-md-2;
+  @extend .text-center;
+  }
+.column_1 {
+  @extend .col-md-1;
   @extend .text-center;
   }
 .form {
@@ -63,6 +71,12 @@ section {
 .top_margin{
   margin-top: 30px;
 }
+.left_margin{
+  margin-left: -30px;
+}
+.left_margin_1{
+  margin-left: -15px;
+}
 .img_responsive{
   height: 150px;
 }
@@ -79,6 +93,10 @@ table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 50%;
+}
+.home_table{
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
 }
 td {
   border: 1px solid #dddddd;

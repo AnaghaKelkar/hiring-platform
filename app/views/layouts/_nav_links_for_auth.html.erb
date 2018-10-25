@@ -1,7 +1,9 @@
 <% if user_signed_in? %>
   <% if current_user.is_admin? %>
+    <li><%= link_to 'Home', dashboard_admin_path %></li>
     <li><%= link_to 'My profile', admin_path(current_user.loginable) %></li>
   <% else %>
+    <li><%= link_to 'Home', dashboard_applicant_path %></li>
     <li><%= link_to 'My profile', applicant_path(current_user.loginable) %></li>
   <% end %>
   <li><%= link_to 'Edit account', edit_user_registration_path %></li>
@@ -13,11 +15,12 @@
     <li><%= link_to 'Applied jobs', applied_jobs_applicants_path %></li>
   <% end %>
 <% else %>
+  <li><%= link_to 'Home', root_path %></li>
   <li><%= link_to 'Sign in', new_user_session_path %></li>
   <li><%= link_to 'Sign up', new_user_registration_path %></li>
 <% end %>
 <% if user_signed_in? %>
-  <li style="margin-left: 450px;">
+  <li style="margin-left: 530px;">
     <%= link_to destroy_user_session_path, :method=>'delete' do %>
       <span class="glyphicon glyphicon-off"></span>
     <% end %>

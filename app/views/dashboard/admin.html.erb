@@ -1,1 +1,140 @@
-admin.html.erb
+<div class="container">
+  <div class="row">
+    <div class="column_4">
+      <div class="authform jobtable">
+        <center><b>My profile</b></center>
+      </div>
+      <br>
+      <center>
+        <div>
+          <table class="home_table">
+            <tbody>
+              <tr>
+                <th><b>Name</th>
+                <td><%= @admin.user.try(:name) %></td>
+              </tr>
+              <tr>
+                <th><b>Email</th>
+                <td><%= @admin.user.try(:email) %></td>
+              </tr>
+              <tr>
+                <th><b>Title</th>
+                <% title = @admin.title %> 
+                <td>
+                  <% if title.present? %>
+                    <%= title %>
+                  <% else %>
+                    N/A
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <th><b>Mobile number</th>
+                <% mobile = @admin.mobile_number %> 
+                <td>
+                  <% if mobile.present? %>
+                    <%= mobile %>
+                  <% else %>
+                    N/A
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <th><b>Company Address</th>
+                <td>
+                  <% if @address.nil? %>
+                    N/A
+                  <% else %>
+                    <%= @address.line_1 %> <br> <%= @address.city %> <br> <%= @address.state %> <br>
+                    <%= @address.pincode %> <br> <%= @address.country %>
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <th><b>Founded in</th>
+                <% founded_in = @admin.founded_in %>
+                <td>
+                  <% if founded_in.present? %>
+                    <%= founded_in %>
+                  <% else %>
+                    N/A
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <th><b>Number of employees</th>
+                <% size = @admin.size %>
+                <td>
+                  <% if size.present? %>
+                    <%= size %>
+                  <% else %>
+                    N/A
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <th><b>Available Positions</th>
+                <% positions = @admin.positions %>
+                <td>
+                  <% if positions.present? %>
+                    <%= positions %>
+                  <% else %>
+                    N/A
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <th><b>Currently hiring</th>
+                <% hiring = @admin.hiring %>
+                <td>
+                  <% if hiring.nil? %>
+                    N/A
+                  <% elsif hiring %>
+                    Yes, we are hiring
+                  <% else %>
+                    No, we will keep you updated
+                  <% end %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <br>
+        </div>
+      </center>
+    </div>
+    <div class="column_8">
+      <div class="authform jobtable">
+        <center><%= @jobs.count %> <b>Job Postings</b> by <%= current_user.name %></center>
+      </div>
+      <br>
+      <center>
+        <% if @jobs.empty? %>
+          <p class = "positive-review"><b>No active jobs by you.</b></p>
+        <% else %>
+          <div>
+            <table>
+              <tbody>
+                <tr>
+                  <th><b>Requisition</th>
+                  <th><b>Title</th>
+                  <th><b>Description</th>
+                  <th><b>Minimum Requirement</th>
+                  <th><b>Applicants applied for Job</th>
+                </tr>
+                <% @jobs.each do |job| %>
+                  <tr>
+                    <td><%= job.job_uid %></td>
+                    <td><%= job.title %></td>
+                    <td><%= job.description %></td>
+                    <td><%= job.minimum_requirement %></td>
+                    <td><%= job.applicants_jobs.count %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        <% end %>
+      </center>
+    </div>
+  </div>
+</div>
