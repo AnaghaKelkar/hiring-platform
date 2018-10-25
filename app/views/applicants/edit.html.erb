@@ -63,7 +63,7 @@
     </div>
     <div class="form-group">
       <%= f.label :earliest_starting_date %>
-      <%= f.date_field :start_date, value: @applicant.start_date, class: 'form-control' %>
+      <%= f.date_field :start_date, value: @applicant.start_date.strftime("%Y-%m-%d"), class: 'form-control' %>
     </div>
     <div class="form-group">
       <%= f.label :degree %>
@@ -80,6 +80,10 @@
     <div class="form-group">
       <%= f.label :previous_education %>
       <%= f.text_area :education, value: @applicant.education, class: 'form-control'%>
+    </div>
+    <div class="form-group">
+      <%= f.label :describe_yourself_in_one_line %>
+      <%= f.text_area :description, value: @applicant.description, class: 'form-control'%>
     </div>
     <center><%= f.submit 'Update', :class => 'button' %></center>
   <% end %>
