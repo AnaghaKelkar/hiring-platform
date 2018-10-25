@@ -98,8 +98,10 @@
           </tbody>
         </table>
         <br>
-        <%= link_to edit_admin_path(@admin), :class => "btn btn-info bg-btn" do %>
-          <center><span class="glyphicon glyphicon-pencil"> Edit</span></center>
+        <% if current_user.is_admin? %>
+          <%= link_to edit_admin_path(@admin), :class => "btn btn-info bg-btn" do %>
+            <center><span class="glyphicon glyphicon-pencil"> Edit</span></center>
+          <% end %>
         <% end %>
       </div>
     </center>

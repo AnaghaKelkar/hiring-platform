@@ -1,1 +1,158 @@
-applicant.html.erb
+<div class="container">
+  <div class="row">
+    <div class="column_4">
+      <div class="authform jobtable">
+        <center><b>My profile</b></center>
+      </div>
+      <br>
+      <center>
+        <div>
+          <table class="home_table">
+            <tbody>
+              <tr>
+                <th><b>Name</th>
+                <td><%= @applicant.user.try(:name) %></th>
+              </tr>
+              <tr>
+                <th><b>Email</th>
+                <% email = @applicant.user.try(:email) %>
+                <td>
+                  <% if email.present?  %>
+                    <%= email %>
+                  <% else %>
+                    N/A
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <th><b>Mobile number</th>
+                <% mobile = @applicant.mobile_number %> 
+                <td>
+                  <% if mobile.present? %>
+                    <%= mobile %>
+                  <% else %>
+                    N/A
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <th><b>Address</th>
+                <td>
+                  <% if @address.nil? %>
+                    N/A
+                  <% else %>
+                    <%= @address.line_1 %> <br> <%= @address.city %> <br> <%= @address.state %> <br>
+                    <%= @address.pincode %> <br> <%= @address.country %>
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <th><b>Starting date</th>
+                <% start = @applicant.start_date %>
+                <td>
+                  <% if start.present? %>
+                    <%= start.strftime('%d-%b-%Y') %>
+                  <% else %>
+                    N/A
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <th><b>Maximum degree obtained</th>
+                <% degree = @applicant.degree %>
+                <td>
+                  <% if degree.present? %>
+                    <%= degree %>
+                  <% else %>
+                    N/A
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <th><b>Roles interested in</th>
+                <% roles = @applicant.roles_interested %>
+                <td>
+                  <% if roles.present? %>
+                    <%= roles %>
+                  <% else %>
+                    N/A
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <th><b>Previous Employers</th>
+                <% employers = @applicant.employers %>
+                <td>
+                  <% if employers.present? %>
+                    <%= employers %>
+                  <% else %>
+                    N/A
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <th><b>Previous Education</th>
+                <% education = @applicant.education %>
+                <td>
+                  <% if education.present? %>
+                    <%= education %>
+                  <% else %>
+                    N/A
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <th><b>Describe yourself in one line </th>
+                <% description = @applicant.description %>
+                <td>
+                  <% if description.present? %>
+                    <%= description %>
+                  <% else %>
+                    N/A
+                  <% end %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <br>
+        </div>
+      </center>
+    </div>
+    <div class="column_8">
+      <div class="authform jobtable">
+        <center><b>Applied Jobs by <%= current_user.name %></b></center>
+      </div>
+      <br>
+      <center>
+        <% if @jobs.empty? %>
+          <p class = "positive-review"><b>No applications yet.</b></p>
+        <% else %>
+          <div>
+            <table>
+              <tbody>
+                <tr>
+                  <b>
+                    <th>Employer</th>
+                    <th>Requisition</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Minimum Requirement</th>
+                  </b>
+                </tr>
+                <% @jobs.each do |job| %>
+                  <tr>
+                    <td><%= job.admin.user.try(:name) %></td>
+                    <td><%= job.job_uid %></td>
+                    <td><%= job.title %></td>
+                    <td><%= job.description %></td>
+                    <td><%= job.minimum_requirement %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        <% end %>
+      </center>
+    </div>
+  </div>
+</div>
